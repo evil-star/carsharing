@@ -1,0 +1,54 @@
+@import "../../../assets/styles/variables"
+
+.button
+    display: inline-block
+    height: 48px
+    line-height: 48px
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+    font-weight: 500
+    font-size: 18px
+    text-align: center
+    color: #FFFFFF
+    background: $buttonPrimaryBackground
+    cursor: pointer
+    border-radius: 8px
+    padding: 0 50px
+    &:hover
+        background: $buttonHoverPrimaryBackground
+    &:active
+        background: $buttonActivePrimaryBackground
+    &:focus
+        background: $buttonFocusPrimaryBackground
+
+// Button variants
+.button--action
+    border-radius: 4px
+    height: 48px
+
+// Button colors
+.button--blue
+    background: $buttonBlueBackground
+    &:hover
+        background: $buttonHoverBlueBackground
+    &:active
+        background: $buttonActiveBlueBackground
+    &:focus
+        background: $buttonFocusBlueBackground
+.button--red
+    background: $buttonRedBackground
+    &:hover
+        background: $buttonHoverRedBackground
+    &:active
+        background: $buttonActiveRedBackground
+    &:focus
+        background: $buttonFocusRedBackground
+.button--purple
+    background: $buttonPurpleBackground
+    &:hover
+        background: $buttonHoverPurpleBackground
+    &:active
+        background: $buttonActivePurpleBackground
+    &:focus
+        background: $buttonFocusPurpleBackground

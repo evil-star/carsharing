@@ -1,0 +1,46 @@
+@import "../../assets/styles/variables"
+    
+.layout
+    margin-left: 64px
+.layout__app_bar
+    flex-shrink: 0
+
+.app_bar
+    width: 64px
+    background: #151B1F
+    height: 100vh
+    position: fixed
+    left: 0
+    top: 0
+    padding-top: 32px
+    padding-bottom: 31px
+    display: flex
+    flex-direction: column
+.app_bar__burger
+    display: flex
+    flex-direction: column
+    align-items: center
+    padding-top: 10px
+    padding-bottom: 10px
+.app_bar__lang
+    text-align: center
+    margin-top: auto
+    cursor: pointer
+    color: $primary
+    transition: color .2s
+    &:hover
+        color: $primaryHover
+    &:active
+        color: $primaryActive
+
+.burger
+    cursor: pointer
+.burger__line
+    display: block
+    width: 24px
+    height: 3px
+    border-radius: 10px
+    background-color: #fff
+    margin-bottom: 5px
+    &:last-child
+        margin-bottom: 0
