@@ -1,4 +1,5 @@
-@import "../../assets/styles/variables"
+@import "../../../assets/styles/variables"
+@import "../../../assets/styles/mixins/media-queries"
     
 .hero_slider
     height: 100%
@@ -26,6 +27,8 @@
         transition: background .2s
         &:hover
             background: rgba($primary, .2)
+        +lg()
+            width: 32px
     \:global(.slick-next)
         right: 0
     \:global(.slick-prev)
@@ -77,6 +80,8 @@
         width: 100%
         height: 100%
         background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%)
+    +lg
+        padding: 271px 64px 150px
 .hero_slide__content
     position: relative
 .hero_slide__text
@@ -90,8 +95,14 @@
     color: $white
     &:last-child
         margin-bottom: 0
+    +lg
+        font-size: 32px
+        line-height: 38px
 .hero_slide__subtitle
     font-weight: 300
     font-size: 24px
     line-height: 90%
     color: $greyLight
+    +lg
+        font-size: 22px
+        line-height: 22px

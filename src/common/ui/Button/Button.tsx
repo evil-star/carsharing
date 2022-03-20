@@ -14,12 +14,13 @@ const Button: FC<ButtonProps> = ({
   children,
   variant = '',
   color = '',
+  className,
   ...rest
 }) => {
   return (
     <button
       {...rest}
-      className={classNames(styles.button, {
+      className={classNames(styles.button, className, {
         [styles[`button--${variant}`]]: variant,
         [styles[`button--${color}`]]: color,
       })}

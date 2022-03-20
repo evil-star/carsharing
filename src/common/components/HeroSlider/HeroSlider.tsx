@@ -2,9 +2,9 @@ import React, { FC } from 'react';
 import 'slick-carousel/slick/slick.css';
 import styles from './HeroSlider.module.sass';
 import Slider, { Settings } from 'react-slick';
-import { ReactComponent as ArrowLeftIcon } from '../../assets/images/icons/arrow-left.svg';
-import { ReactComponent as ArrowRightIcon } from '../../assets/images/icons/arrow-right.svg';
-import Button, { ButtonColors } from '../ui/Button/Button';
+import { ReactComponent as ArrowLeftIcon } from '../../../assets/images/icons/arrow-left.svg';
+import { ReactComponent as ArrowRightIcon } from '../../../assets/images/icons/arrow-right.svg';
+import Button, { ButtonColors } from '../../ui/Button/Button';
 import { To, useNavigate } from 'react-router';
 
 export interface ISlide {
@@ -45,10 +45,9 @@ const HeroSlider: FC<HeroSliderProps> = ({ slides, ...rest }) => {
   return (
     <Slider {...rest} className={styles.hero_slider} {...settings}>
       {slides.map((s, idx) => (
-        <div>
+        <div key={idx}>
           <div
             className={styles.hero_slide}
-            key={idx}
             style={{
               backgroundImage: `url(${
                 process.env.PUBLIC_URL + s.backgroundImage

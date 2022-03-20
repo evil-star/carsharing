@@ -1,26 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import routes from './routes';
+import { setVhVariable } from './utils/setVhVariable';
 
 const App = () => {
+  useEffect(() => {
+    window.addEventListener('resize', setVhVariable);
+    return () => {
+      window.removeEventListener('resize', setVhVariable);
+    };
+  });
+
   return (
     <HashRouter>
       <Routes>
-        {routes.map(
-          ({ path, component: Component, layout: Layout, name }) => (
-            <Route
-              path={path}
-              key={name}
-              element={
-                <Layout>
-                  <React.Suspense fallback={<>...</>}>
-                    <Component />
-                  </React.Suspense>
-                </Layout>
-              }
-            />
-          )
-        )}
+        {routes.map(({ path, component: Component, layout: Layout, name }) => (
+          <Route
+            path={path}
+            key={name}
+            element={
+              <Layout>
+                <React.Suspense fallback={<>...</>}>
+                  <Component />
+                </React.Suspense>
+              </Layout>
+            }
+          />
+        ))}
       </Routes>
     </HashRouter>
   );

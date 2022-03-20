@@ -1,4 +1,36 @@
 {
+  "mainMenuLinks": [
+    {
+      "text": "Парковка",
+      "href": "/"
+    },
+    {
+      "text": "Страховка",
+      "href": "/"
+    },
+    {
+      "text": "Бензин",
+      "href": "/"
+    },
+    {
+      "text": "Обслуживание",
+      "href": "/"
+    }
+  ],
+  "socialMedia": [
+    {
+      "type": "telegram",
+      "href": "/"
+    },
+    {
+      "type": "facebook",
+      "href": "/"
+    },
+    {
+      "type": "instagram",
+      "href": "/"
+    }
+  ],
   "homePageSlides": [
     {
       "title": "Бесплатная парковка",
