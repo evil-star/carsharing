@@ -1,0 +1,56 @@
+@import "../../../assets/styles/variables.sass"
+@import "../../../assets/styles/mixins/media-queries"
+
+.app_bar
+    width: 64px
+    background: #151B1F
+    height: 100vh
+    height: calc(var(--vh, 1vh) * 100)
+    position: fixed
+    left: 0
+    top: 0
+    padding-top: 32px
+    padding-bottom: 31px
+    display: flex
+    flex-direction: column
+    z-index: 110
+    transition: background .2s
+    flex-shrink: 0
+    +md
+        width: 85px
+    +sm
+        display: none
+.app_bar__burger
+    width: 24px
+.app_bar__burger_wrap
+    padding: 10px 0
+    display: flex
+    justify-content: center
+.app_bar__lang
+    text-align: center
+    margin-top: auto
+    cursor: pointer
+    color: $primary
+    transition: color .2s
+    font-size: 12px
+    line-height: 16px
+    font-weight: 700
+    &:hover
+        color: $primaryHover
+    &:active
+        color: $primaryActive
+.app_bar--dark
+    background: #111518
+    .app_bar__lang
+        display: none
+
+.app_bar__mobile_burger
+    display: none
+    width: 29px
+    padding: 5px
+    padding-top: 8px
+    position: absolute
+    top: 16px
+    left: 16px
+    +sm
+        display: block

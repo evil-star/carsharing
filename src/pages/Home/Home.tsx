@@ -6,8 +6,10 @@ import HeroSlider, {
 } from '../../common/components/HeroSlider/HeroSlider';
 import config from '../../config.json';
 import PageHeader from '../../common/components/PageHeader/PageHeader';
+import { useNavigate } from 'react-router';
 
 const Home: FC = () => {
+  const navigate = useNavigate();
   const { homePageSlides } = config;
 
   return (
@@ -26,7 +28,12 @@ const Home: FC = () => {
               Поминутная аренда авто твоего города
             </div>
           </div>
-          <Button className={styles.home__button}>Забронировать</Button>
+          <Button
+            className={styles.home__button}
+            onClick={() => navigate('/order')}
+          >
+            Забронировать
+          </Button>
         </div>
 
         <div className={styles.home__extra}>

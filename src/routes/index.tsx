@@ -2,6 +2,7 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout/MainLayout';
 import Home from '../pages/Home/Home';
+import Order from '../pages/Order/Order';
 
 export interface Route {
   name: string;
@@ -22,6 +23,12 @@ const routes: Route[] = [
     path: '/',
     layout: MainLayout,
     component: () => <Home />,
+  },
+  {
+    name: 'order',
+    path: '/order',
+    layout: MainLayout,
+    component: () => <Order />,
   },
 ];
 
