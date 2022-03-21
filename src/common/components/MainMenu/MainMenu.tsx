@@ -10,7 +10,7 @@ import Hamburger from '../../ui/Hamburger/Hamburger';
 
 type SocialMediaTypes = 'telegram' | 'facebook' | 'instagram' | undefined;
 
-interface Links {
+export interface MenuLinks {
   text: string;
   href: To;
 }
@@ -22,14 +22,14 @@ export interface SocialMedia {
 
 interface MainMenuProps extends React.ComponentPropsWithoutRef<'div'> {
   isActive: boolean;
-  links: Links[];
+  menuLinks: MenuLinks[];
   socialMedia: SocialMedia[];
   handleClose?: () => void;
 }
 
 const MainMenu: FC<MainMenuProps> = ({
   isActive,
-  links,
+  menuLinks,
   socialMedia,
   handleClose = () => {},
 }) => {
@@ -50,23 +50,25 @@ const MainMenu: FC<MainMenuProps> = ({
             <Hamburger variant='cross' />
           </div>
           <div className={styles.menu__links}>
-            {links.map((l) => (
+            {menuLinks.map((l, index) => (
               <NavLink
                 to={l.href}
                 className={styles.menu__link}
                 onClick={handleClose}
+                key={index}
               >
                 {l.text}
               </NavLink>
             ))}
           </div>
           <div className={styles.menu__socials}>
-            {socialMedia.map((s) => (
+            {socialMedia.map((s, index) => (
               <a
                 href={s.href}
                 target='_blank'
                 rel='noreferrer'
                 className={styles.menu__social}
+                key={index}
               >
                 {s.type === 'telegram' && <TelegramIcon />}
                 {s.type === 'facebook' && <FacebookIcon />}

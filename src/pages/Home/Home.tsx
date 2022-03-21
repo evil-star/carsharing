@@ -1,15 +1,11 @@
 import React, { FC } from 'react';
 import styles from './Home.module.sass';
 import Button from '../../common/ui/Button/Button';
-import HeroSlider, {
-  ISlide,
-} from '../../common/components/HeroSlider/HeroSlider';
-import config from '../../config.json';
+import HeroSlider from '../../common/components/HeroSlider/HeroSlider';
+import { homePageSlides } from '../../consts';
 import PageHeader from '../../common/components/PageHeader/PageHeader';
 
 const Home: FC = () => {
-  const { homePageSlides } = config;
-
   return (
     <div className={styles.home}>
       <div className={styles.home__main_col}>
@@ -40,7 +36,7 @@ const Home: FC = () => {
       </div>
 
       <div className={styles.home__slider_col}>
-        <HeroSlider slides={homePageSlides as ISlide[]} />
+        <HeroSlider slides={homePageSlides} />
       </div>
     </div>
   );

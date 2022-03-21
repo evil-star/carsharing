@@ -1,24 +1,21 @@
 import classNames from 'classnames';
 import React, { FC, useState } from 'react';
 import Hamburger from '../../common/ui/Hamburger/Hamburger';
-import MainMenu, {
-  SocialMedia,
-} from '../../common/components/MainMenu/MainMenu';
+import MainMenu from '../../common/components/MainMenu/MainMenu';
 import styles from './MainLayout.module.sass';
-import config from '../../config.json';
+import { mainMenuLinks, socialMedia } from '../../consts';
 
 const MainLayout: FC = ({ children }) => {
-  const { mainMenuLinks, socialMedia } = config;
   const [isMenuActive, setIsMenuActive] = useState(false);
 
-  const toggleMenu = () => setIsMenuActive(!isMenuActive);
+  const toggleMenu = () => setIsMenuActive((isMenuActive) => !isMenuActive);
 
   return (
     <div className={styles.layout}>
       <MainMenu
         isActive={isMenuActive}
-        links={mainMenuLinks}
-        socialMedia={socialMedia as SocialMedia[]}
+        menuLinks={mainMenuLinks}
+        socialMedia={socialMedia}
         handleClose={toggleMenu}
       />
       <div

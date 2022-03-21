@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import 'slick-carousel/slick/slick.css';
 import styles from './HeroSlider.module.sass';
-import Slider, { Settings } from 'react-slick';
+import Slider, { CustomArrowProps, Settings } from 'react-slick';
 import { ReactComponent as ArrowLeftIcon } from '../../../assets/images/icons/arrow-left.svg';
 import { ReactComponent as ArrowRightIcon } from '../../../assets/images/icons/arrow-right.svg';
 import Button, { ButtonColors } from '../../ui/Button/Button';
 import { To, useNavigate } from 'react-router';
 
-export interface ISlide {
+export interface Slide {
   title: String;
   subtitle?: String;
   buttonHref?: To;
@@ -17,18 +17,26 @@ export interface ISlide {
 }
 
 interface HeroSliderProps {
-  slides: ISlide[];
+  slides: Slide[];
 }
 
 const HeroSlider: FC<HeroSliderProps> = ({ slides, ...rest }) => {
   const navigate = useNavigate();
 
-  const SlickArrowLeft = ({ currentSlide, slideCount, ...props }: any) => (
+  const SlickArrowLeft = ({
+    currentSlide,
+    slideCount,
+    ...props
+  }: CustomArrowProps) => (
     <div {...props}>
       <ArrowLeftIcon />
     </div>
   );
-  const SlickArrowRight = ({ currentSlide, slideCount, ...props }: any) => (
+  const SlickArrowRight = ({
+    currentSlide,
+    slideCount,
+    ...props
+  }: CustomArrowProps) => (
     <div {...props}>
       <ArrowRightIcon />
     </div>

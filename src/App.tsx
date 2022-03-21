@@ -14,17 +14,11 @@ const App = () => {
   return (
     <HashRouter>
       <Routes>
-        {routes.map(({ path, component: Component, layout: Layout, name }) => (
+        {routes.map(({ path, component, layout: Layout, name }) => (
           <Route
             path={path}
             key={name}
-            element={
-              <Layout>
-                <React.Suspense fallback={<>...</>}>
-                  <Component />
-                </React.Suspense>
-              </Layout>
-            }
+            element={<Layout>{component}</Layout>}
           />
         ))}
       </Routes>

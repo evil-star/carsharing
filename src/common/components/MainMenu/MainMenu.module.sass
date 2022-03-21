@@ -13,7 +13,7 @@
     z-index: 100
     pointer-events: none
     opacity: 0
-    transition: opacity .2s
+    transition: opacity .4s
     +md
         padding-left: 85px
     +sm
@@ -24,6 +24,8 @@
     height: 100%
     position: relative
     overflow: auto
+    transition: transform .6s
+    transform: translateX(-200px)
     +lg
         width: 57.2%
     +md
@@ -115,3 +117,5 @@
 .menu--active
     opacity: 1
     pointer-events: auto
+    .menu__main
+        transform: translateX(0)
