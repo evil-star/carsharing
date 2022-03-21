@@ -1,7 +1,11 @@
 import React, { FC } from 'react';
 import 'slick-carousel/slick/slick.css';
 import styles from './Slider.module.sass';
-import { default as SlickSlider, CustomArrowProps, Settings } from 'react-slick';
+import {
+  default as SlickSlider,
+  CustomArrowProps,
+  Settings,
+} from 'react-slick';
 import { ReactComponent as ArrowLeftIcon } from '../../../assets/images/icons/arrow-left.svg';
 import { ReactComponent as ArrowRightIcon } from '../../../assets/images/icons/arrow-right.svg';
 import Button, { ButtonColors } from '../../ui/Button/Button';
@@ -74,7 +78,7 @@ const Slider: FC<SliderProps> = ({ slides, ...rest }) => {
                   </div>
                 )}
               </div>
-              {slide.buttonText && slide.buttonHref ? (
+              {slide.buttonText && slide.buttonHref && (
                 <Button
                   onClick={() => slide.buttonHref && navigate(slide.buttonHref)}
                   variant='action'
@@ -82,7 +86,7 @@ const Slider: FC<SliderProps> = ({ slides, ...rest }) => {
                 >
                   {slide.buttonText}
                 </Button>
-              ) : null}
+              )}
             </div>
           </div>
         </div>
