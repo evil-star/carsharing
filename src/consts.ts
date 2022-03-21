@@ -42,6 +42,8 @@ export const socialMedia: SocialMedia[] = [
 export const homePageSlides: Slide[] = [
   {
     title: 'Бесплатная парковка',
+    subtitle:
+      'Оставляйте машину на платных городских парковках и разрешенных местах, не нарушая ПДД, а также в аэропортах.',
     buttonHref: '/',
     buttonText: 'Подробнее',
     backgroundImage: '/images/home-page-slides/1.jpg',
