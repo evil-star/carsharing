@@ -7,17 +7,11 @@ import { ReactComponent as TelegramIcon } from '../../../assets/images/icons/soc
 import { ReactComponent as FacebookIcon } from '../../../assets/images/icons/social-media/facebook-circle.svg';
 import { ReactComponent as InstagramIcon } from '../../../assets/images/icons/social-media/instagram-circle.svg';
 import Hamburger from '../../ui/Hamburger/Hamburger';
-
-type SocialMediaTypes = 'telegram' | 'facebook' | 'instagram' | undefined;
+import { SocialMedia } from '../../../interfaces/SocialMedia.interface';
 
 export interface MenuLinks {
   text: string;
   href: To;
-}
-
-export interface SocialMedia {
-  type: SocialMediaTypes;
-  href: string;
 }
 
 interface MainMenuProps extends React.ComponentPropsWithoutRef<'div'> {
@@ -50,29 +44,29 @@ const MainMenu: FC<MainMenuProps> = ({
             <Hamburger variant='cross' />
           </div>
           <div className={styles.menu__links}>
-            {menuLinks.map((l, index) => (
+            {menuLinks.map((link, index) => (
               <NavLink
-                to={l.href}
+                to={link.href}
                 className={styles.menu__link}
                 onClick={handleClose}
                 key={index}
               >
-                {l.text}
+                {link.text}
               </NavLink>
             ))}
           </div>
           <div className={styles.menu__socials}>
-            {socialMedia.map((s, index) => (
+            {socialMedia.map((socialItem, index) => (
               <a
-                href={s.href}
+                href={socialItem.href}
                 target='_blank'
                 rel='noreferrer'
                 className={styles.menu__social}
                 key={index}
               >
-                {s.type === 'telegram' && <TelegramIcon />}
-                {s.type === 'facebook' && <FacebookIcon />}
-                {s.type === 'instagram' && <InstagramIcon />}
+                {socialItem.type === 'telegram' && <TelegramIcon />}
+                {socialItem.type === 'facebook' && <FacebookIcon />}
+                {socialItem.type === 'instagram' && <InstagramIcon />}
               </a>
             ))}
           </div>

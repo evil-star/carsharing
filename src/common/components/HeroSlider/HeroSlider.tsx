@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import 'slick-carousel/slick/slick.css';
-import styles from './HeroSlider.module.sass';
-import Slider, { CustomArrowProps, Settings } from 'react-slick';
+import styles from './Slider.module.sass';
+import { default as SlickSlider, CustomArrowProps, Settings } from 'react-slick';
 import { ReactComponent as ArrowLeftIcon } from '../../../assets/images/icons/arrow-left.svg';
 import { ReactComponent as ArrowRightIcon } from '../../../assets/images/icons/arrow-right.svg';
 import Button, { ButtonColors } from '../../ui/Button/Button';
@@ -16,11 +16,11 @@ export interface Slide {
   buttonColor?: ButtonColors;
 }
 
-interface HeroSliderProps {
+interface SliderProps {
   slides: Slide[];
 }
 
-const HeroSlider: FC<HeroSliderProps> = ({ slides, ...rest }) => {
+const Slider: FC<SliderProps> = ({ slides, ...rest }) => {
   const navigate = useNavigate();
 
   const SlickArrowLeft = ({
@@ -51,46 +51,44 @@ const HeroSlider: FC<HeroSliderProps> = ({ slides, ...rest }) => {
   };
 
   return (
-    <Slider {...rest} className={styles.hero_slider} {...settings}>
-      {slides.map((s, idx) => (
+    <SlickSlider {...rest} className={styles.hero_slider} {...settings}>
+      {slides.map((slide, idx) => (
         <div key={idx}>
           <div
             className={styles.hero_slide}
             style={{
               backgroundImage: `url(${
-                process.env.PUBLIC_URL + s.backgroundImage
+                process.env.PUBLIC_URL + slide.backgroundImage
               })`,
             }}
           >
             <div className={styles.hero_slide__content}>
-              {s.title || s.subtitle ? (
-                <div className={styles.hero_slide__text}>
-                  {s.title ? (
-                    <div className={styles.hero_slide__title}>{s.title}</div>
-                  ) : null}
-                  {s.subtitle ? (
-                    <div className={styles.hero_slide__subtitle}>
-                      Оставляйте машину на платных городских парковках и
-                      разрешенных местах, не нарушая ПДД, а также в аэропортах.
-                    </div>
-                  ) : null}
-                </div>
-              ) : null}
-              {s.buttonText && s.buttonHref ? (
+              <div className={styles.hero_slide__text}>
+                {slide.title && (
+                  <div className={styles.hero_slide__title}>{slide.title}</div>
+                )}
+                {slide.subtitle && (
+                  <div className={styles.hero_slide__subtitle}>
+                    Оставляйте машину на платных городских парковках и
+                    разрешенных местах, не нарушая ПДД, а также в аэропортах.
+                  </div>
+                )}
+              </div>
+              {slide.buttonText && slide.buttonHref ? (
                 <Button
-                  onClick={() => s.buttonHref && navigate(s.buttonHref)}
+                  onClick={() => slide.buttonHref && navigate(slide.buttonHref)}
                   variant='action'
-                  color={s.buttonColor}
+                  color={slide.buttonColor}
                 >
-                  {s.buttonText}
+                  {slide.buttonText}
                 </Button>
               ) : null}
             </div>
           </div>
         </div>
       ))}
-    </Slider>
+    </SlickSlider>
   );
 };
 
-export default HeroSlider;
+export default Slider;
