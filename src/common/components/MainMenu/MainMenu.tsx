@@ -11,7 +11,7 @@ export interface MenuLinks {
   href: To;
 }
 
-interface MainMenuProps extends React.ComponentPropsWithoutRef<'div'> {
+interface MainMenuProps {
   isActive: boolean;
   menuLinks: MenuLinks[];
   socialMedia: SocialMedia[];
