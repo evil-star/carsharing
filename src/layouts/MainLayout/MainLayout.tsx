@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import AppBar from '../../common/components/AppBar/AppBar';
 import styles from './MainLayout.module.sass';
+import AppBar from '../../common/components/AppBar/AppBar';
 
 const MainLayout: FC = ({ children }) => {
   return (

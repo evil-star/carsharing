@@ -1,16 +1,13 @@
 import React, { FC } from 'react';
 import styles from './Home.module.sass';
 import Button from '../../common/ui/Button/Button';
-import HeroSlider, {
-  ISlide,
-} from '../../common/components/HeroSlider/HeroSlider';
-import config from '../../config.json';
+import HeroSlider from '../../common/components/HeroSlider/HeroSlider';
+import { homePageSlides } from '../../consts';
 import PageHeader from '../../common/components/PageHeader/PageHeader';
 import { useNavigate } from 'react-router';
 
 const Home: FC = () => {
   const navigate = useNavigate();
-  const { homePageSlides } = config;
 
   return (
     <div className={styles.home}>
@@ -47,7 +44,7 @@ const Home: FC = () => {
       </div>
 
       <div className={styles.home__slider_col}>
-        <HeroSlider slides={homePageSlides as ISlide[]} />
+        <HeroSlider slides={homePageSlides} />
       </div>
     </div>
   );

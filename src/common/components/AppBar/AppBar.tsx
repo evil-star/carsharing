@@ -1,12 +1,11 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
-import config from '../../../config.json';
+import { mainMenuLinks, socialMedia } from '../../../consts';
 import Hamburger from '../../ui/Hamburger/Hamburger';
-import MainMenu, { SocialMedia } from '../MainMenu/MainMenu';
+import MainMenu from '../MainMenu/MainMenu';
 import styles from './AppBar.module.sass';
 
 const AppBar = () => {
-  const { mainMenuLinks, socialMedia } = config;
   const [isMenuActive, setIsMenuActive] = useState(false);
 
   const toggleMenu = () => setIsMenuActive(!isMenuActive);
@@ -15,8 +14,8 @@ const AppBar = () => {
     <>
       <MainMenu
         isActive={isMenuActive}
-        links={mainMenuLinks}
-        socialMedia={socialMedia as SocialMedia[]}
+        menuLinks={mainMenuLinks}
+        socialMedia={socialMedia}
         handleClose={toggleMenu}
       />
       <div
