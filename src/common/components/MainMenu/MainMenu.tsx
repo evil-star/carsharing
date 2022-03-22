@@ -3,9 +3,6 @@ import React, { FC, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { To } from 'react-router';
 import styles from './MainMenu.module.sass';
-import { ReactComponent as TelegramIcon } from '../../../assets/images/icons/social-media/telegram-circle.svg';
-import { ReactComponent as FacebookIcon } from '../../../assets/images/icons/social-media/facebook-circle.svg';
-import { ReactComponent as InstagramIcon } from '../../../assets/images/icons/social-media/instagram-circle.svg';
 import Hamburger from '../../ui/Hamburger/Hamburger';
 import { SocialMedia } from '../../../interfaces/SocialMedia.interface';
 
@@ -64,9 +61,7 @@ const MainMenu: FC<MainMenuProps> = ({
                 className={styles.menu__social}
                 key={index}
               >
-                {socialItem.type === 'telegram' && <TelegramIcon />}
-                {socialItem.type === 'facebook' && <FacebookIcon />}
-                {socialItem.type === 'instagram' && <InstagramIcon />}
+                {socialItem.icon}
               </a>
             ))}
           </div>

@@ -1,6 +1,9 @@
 import { Slide } from './common/components/HeroSlider/HeroSlider';
 import { MenuLinks } from './common/components/MainMenu/MainMenu';
 import { SocialMedia } from './interfaces/SocialMedia.interface';
+import { ReactComponent as TelegramIcon } from './assets/images/icons/social-media/telegram-circle.svg';
+import { ReactComponent as FacebookIcon } from './assets/images/icons/social-media/facebook-circle.svg';
+import { ReactComponent as InstagramIcon } from './assets/images/icons/social-media/instagram-circle.svg';
 
 // Ссылки в меню
 export const mainMenuLinks: MenuLinks[] = [
@@ -25,16 +28,16 @@ export const mainMenuLinks: MenuLinks[] = [
 // Ссылки на соц сети
 export const socialMedia: SocialMedia[] = [
   {
-    type: 'telegram',
     href: '/',
+    icon: <TelegramIcon />,
   },
   {
-    type: 'facebook',
     href: '/',
+    icon: <FacebookIcon />,
   },
   {
-    type: 'instagram',
     href: '/',
+    icon: <InstagramIcon />,
   },
 ];
 
