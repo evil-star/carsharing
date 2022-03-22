@@ -4,6 +4,7 @@ import routes from './routes';
 import { setVhVariable } from './utils/setVhVariable';
 
 const App = () => {
+  setVhVariable();
   useEffect(() => {
     window.addEventListener('resize', setVhVariable);
     return () => {
