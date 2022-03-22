@@ -1,0 +1,28 @@
+.burger
+    cursor: pointer
+    display: flex
+    flex-direction: column
+    align-items: center
+.burger__line
+    display: block
+    width: 100%
+    height: 3px
+    border-radius: 10px
+    background-color: #fff
+    margin-bottom: 5px
+    transition: transform .2s
+    &:last-child
+        margin-bottom: 0
+
+.burger--cross
+    .burger__line:nth-child(2)
+        opacity: 0
+    .burger__line:nth-child(1)
+        transform: rotate(45deg)
+        position: relative
+        bottom: -8px
+    .burger__line:nth-child(3)
+        transform: rotate(-45deg)
+        position: relative
+        top: -8px
+        

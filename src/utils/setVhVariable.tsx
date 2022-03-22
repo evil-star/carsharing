@@ -1,0 +1,5 @@
+// Adding css variable to fix "vh" on mobile
+export const setVhVariable = () => {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+};

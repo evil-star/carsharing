@@ -1,0 +1,28 @@
+@import "../../../assets/styles/variables"
+@import "../../../assets/styles/mixins/media-queries"
+    
+.header
+    display: flex
+    align-items: flex-start
+    justify-content: space-between
+    +sm
+        flex-direction: column
+        align-items: flex-end
+.header__title
+    color: $primary
+    font-weight: 700
+    font-size: 30px
+    line-height: 35px
+    text-decoration: none
+    +sm
+        margin-bottom: 8px
+.header__city
+    display: flex
+    align-items: center
+.header__city_icon
+    margin-right: 7px
+.header__city_text
+    color: $grey
+    font-weight: 400
+    font-size: 14px
+    line-height: 16px

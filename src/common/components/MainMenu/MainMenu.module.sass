@@ -1,0 +1,121 @@
+@import "../../../assets/styles/variables"
+@import "../../../assets/styles/mixins/media-queries"
+    
+.menu
+    position: fixed
+    top: 0
+    left: 0
+    padding-left: 64px
+    width: 100%
+    height: 100vh
+    height: calc(var(--vh, 1vh) * 100)
+    background:  rgba(21, 27, 31, 0.81)
+    z-index: 100
+    pointer-events: none
+    opacity: 0
+    transition: opacity .4s
+    +md
+        padding-left: 85px
+    +sm
+        padding-left: 0
+.menu__main
+    background: #111518
+    width: 50%
+    height: 100%
+    position: relative
+    overflow: auto
+    transition: transform .6s
+    transform: translateX(-200px)
+    +lg
+        width: 57.2%
+    +md
+        width: 100%
+.menu__content
+    position: absolute
+    top: 50%
+    transform: translate(0, -50%)
+    left: 64px
+    right: 28px
+    +lg
+        left: 33px
+    +md
+        left: 12px
+    +sm
+        position: static
+        transform: none
+        padding: 20px 16px 28px
+        min-height: 100%
+        display: flex
+        align-items: flex-start
+        flex-direction: column
+.menu__links
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    +sm
+        margin-bottom: 38px
+.menu__link
+    font-weight: 500
+    font-size: 32px
+    line-height: 38px
+    color: $white
+    transition: color .2s
+    text-decoration: none
+    text-transform: uppercase
+    margin-bottom: 7px
+    &:last-child
+        margin-bottom: 0
+    &:hover
+        color: $primary
+    +md
+        font-size: 28px
+        line-height: 33px
+    +sm
+        font-size: 22px
+        line-height: 26px
+.menu__socials
+    position: absolute
+    left: 0
+    top: calc(100% + 38px)
+    +sm
+        position: static
+        margin-bottom: 30px
+.menu__social
+    margin-right: 24px
+    svg path
+        transition: fill .2s
+    &:hover
+        svg path
+            fill: $primary
+    &:last-child
+        margin-right: 0
+.menu__cross
+    width: 32px
+    padding: 5px
+    margin: -5px
+    margin-bottom: 33px
+    cursor: pointer
+    display: none
+    +sm
+        display: block
+.menu__lang
+    margin-top: auto
+    cursor: pointer
+    color: $primary
+    transition: color .2s
+    font-size: 12px
+    line-height: 16px
+    font-weight: 700
+    display: none
+    &:hover
+        color: $primaryHover
+    &:active
+        color: $primaryActive
+    +sm
+        display: inline-block
+
+.menu--active
+    opacity: 1
+    pointer-events: auto
+    .menu__main
+        transform: translateX(0)

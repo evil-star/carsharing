@@ -1,0 +1,101 @@
+@import "../../assets/styles/variables"
+@import "../../assets/styles/mixins/media-queries"
+
+.home
+    display: flex
+    flex-wrap: wrap
+    min-height: 100vh
+    min-height: calc(var(--vh, 1vh) * 100)
+
+.home__main_col
+    width: 50%
+    padding: 32px 64px
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    +lg
+        width: 57.2%
+    +md
+        width: 100%
+    +sm
+        padding: 16px 16px 0 16px
+.home__slider_col
+    width: 50%
+    flex-shrink: 0
+    +lg
+        width: 42.8%
+    +md
+        display: none
+
+.home__header
+    margin-bottom: 163px
+    +sm
+        margin-bottom: 33px
+
+.home__main
+    margin-bottom: 60px
+.home__main_text
+    margin-bottom: 60px
+    &:last-child
+        margin-bottom: 0
+    +sm
+        margin-bottom: 32px
+.home__title
+    color: $black
+    font-weight: 700
+    font-size: 70px
+    line-height: 70px
+    margin-bottom: 34px
+    &:last-child
+        margin-bottom: 0
+    +sm
+        font-size: 32px
+        line-height: 36px
+        margin-bottom: 16px
+.home__title_primary
+    color: $primary
+.home__subtitle
+    color: $grey
+    font-weight: 300
+    font-size: 26px
+    line-height: 30px
+    +sm
+        font-size: 18px
+        line-height: 21px
+.home__button
+    +sm
+        margin-left: -16px  
+        width: calc(100% + 32px)
+        border-radius: 0 !important
+
+.home__extra
+    margin-top: auto
+    display: flex
+    justify-content: space-between
+    +sm
+        background-color: #151B1F
+        margin-left: -16px
+        margin-right: -16px
+        padding: 16px
+        flex-direction: column
+        align-items: flex-end
+.home__copyright
+    font-size: 13px
+    line-height: 15px
+    color: $grey
+    +sm
+        color: $white
+        order: 20
+.home__phone
+    color: $black
+    font-size: 13px
+    line-height: 15px
+    +sm
+        order: 10
+        color: $primary
+        margin-bottom: 8px
+        &:hover
+            color: $greyLight
+        &:active
+            color: $white
+        
