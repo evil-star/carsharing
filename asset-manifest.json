@@ -1,7 +1,8 @@
 {
   "files": {
-    "main.css": "/carsharing/static/css/main.f3107e58.css",
-    "main.js": "/carsharing/static/js/main.ef859fbd.js",
+    "main.css": "/carsharing/static/css/main.f67577b2.css",
+    "main.js": "/carsharing/static/js/main.f30fff18.js",
+    "static/media/map.jpg": "/carsharing/static/media/map.35d6adebd8a5e4b8cf19.jpg",
     "static/media/Robotolight.ttf": "/carsharing/static/media/Robotolight.25d47456caffa85babba.ttf",
     "static/media/Robotobold.ttf": "/carsharing/static/media/Robotobold.1ac02c026895c20df570.ttf",
     "static/media/Robotomedium.ttf": "/carsharing/static/media/Robotomedium.704bba02385c62b5914c.ttf",
@@ -19,14 +20,15 @@
     "static/media/location.svg": "/carsharing/static/media/location.480be180d9ca371c17b43a1a70c32ce9.svg",
     "index.html": "/carsharing/index.html",
     "static/media/facebook-circle.svg": "/carsharing/static/media/facebook-circle.01c0ca6ad0dd74a76e52b61aad44deac.svg",
+    "static/media/cross.svg": "/carsharing/static/media/cross.13854ee106ed73c47a96abbcbadc98e0.svg",
     "static/media/arrow-left.svg": "/carsharing/static/media/arrow-left.1752ae9160db5265a941d6120fcaeadb.svg",
     "static/media/arrow-right.svg": "/carsharing/static/media/arrow-right.7591c327fb5160f95b31d713c84e5cc5.svg",
     "static/media/arrow2-right.svg": "/carsharing/static/media/arrow2-right.3f54b55d7d55c4a8870ecaeb995be364.svg",
-    "main.f3107e58.css.map": "/carsharing/static/css/main.f3107e58.css.map",
-    "main.ef859fbd.js.map": "/carsharing/static/js/main.ef859fbd.js.map"
+    "main.f67577b2.css.map": "/carsharing/static/css/main.f67577b2.css.map",
+    "main.f30fff18.js.map": "/carsharing/static/js/main.f30fff18.js.map"
   },
   "entrypoints": [
-    "static/css/main.f3107e58.css",
-    "static/js/main.ef859fbd.js"
+    "static/css/main.f67577b2.css",
+    "static/js/main.f30fff18.js"
   ]
 }
