@@ -50,6 +50,7 @@ const Select = <
         noOptionsMessage={() => 'Не найдено'}
         components={{ DropdownIndicator: null, ClearIndicator }}
         className={classNames(styles.select, selectClassName)}
+        classNamePrefix={styles.select}
       />
     </div>
   );

@@ -22,7 +22,7 @@
         box-shadow: none
         &:hover
             border-color: $grey
-    [class$='-ValueContainer']
+    [class*='__value-container']
         padding: 0
         padding-left: 8px
     [class$='-singleValue']
@@ -35,7 +35,7 @@
         font-size: 14px
         line-height: 16px
         font-weight: 300
-    [class$='-Input']
+    [class*='__input-container']
         margin: 0
         padding: 0
         color: $black
@@ -45,7 +45,7 @@
         margin: 0
         border-radius: 0
         box-shadow: none
-    [class$='-MenuList']
+    [class*='__menu-list']
         padding: 4px 0
         max-height: 106px
         border: 1px solid $greyLight
