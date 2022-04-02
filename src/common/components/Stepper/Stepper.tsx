@@ -3,20 +3,21 @@ import styles from './Stepper.module.sass';
 import { ReactComponent as Arrow2RightIcon } from '../../../assets/images/icons/arrow2-right.svg';
 import classNames from 'classnames';
 
-type StepId = string | number | undefined | null;
+export type StepId = string | number | undefined | null;
 
 export interface Step {
   text: string;
-  id: StepId;
+  id: string | number;
+  isAvailable: boolean;
 }
 
-interface StepperProps extends React.ComponentPropsWithoutRef<'div'> {
+interface StepperProps {
   steps: Step[];
   activeStep: Step;
-  onStepChange?: (step: Step) => void;
+  onStepChange?: (step: StepId) => void;
 }
 
-const Breadcrumbs: FC<StepperProps> = ({
+const Stepper: FC<StepperProps> = ({
   steps,
   onStepChange = () => {},
   activeStep,
@@ -32,16 +33,19 @@ const Breadcrumbs: FC<StepperProps> = ({
     <div className={styles.stepper}>
       <div className='container'>
         <div className={styles.stepper__list}>
-          {steps.map((s, index) => (
-            <div className={styles.stepper__item}>
+          {steps.map((step, index) => (
+            <div className={styles.stepper__item} key={step.id}>
               <div
                 className={classNames(styles.stepper__link, {
-                  [styles['stepper__link--active']]: activeStep.id === s.id,
-                  [styles['stepper__link--completed']]: isStepCompleted(s),
+                  [styles['stepper__link--active']]: activeStep.id === step.id,
+                  [styles['stepper__link--completed']]: isStepCompleted(step),
+                  [styles['stepper__link--available']]: step.isAvailable,
                 })}
-                onClick={() => (isStepCompleted(s) ? onStepChange(s) : null)}
+                onClick={() =>
+                  step.isAvailable ? onStepChange(step.id) : null
+                }
               >
-                {s.text}
+                {step.text}
               </div>
               {steps.length - 1 === index ? null : (
                 <Arrow2RightIcon className={styles.stepper__item_icon} />
@@ -53,4 +57,4 @@ const Breadcrumbs: FC<StepperProps> = ({
     </div>
   );
 };
-export default Breadcrumbs;
+export default Stepper;

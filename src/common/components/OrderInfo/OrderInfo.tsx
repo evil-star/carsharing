@@ -2,16 +2,16 @@ import React, { FC } from 'react';
 import styles from './OrderInfo.module.sass';
 
 interface InfoList {
-  text: string | JSX.Element;
-  value: string | JSX.Element;
+  text: string | JSX.Element | null;
+  value: string | JSX.Element | null;
 }
 
 interface OrderInfoProps {
-  title?: string | JSX.Element;
-  infoList?: InfoList[];
-  totalPriceLabel?: string | JSX.Element;
-  totalPrice?: string | JSX.Element;
-  footer?: JSX.Element;
+  title?: string | JSX.Element | null;
+  infoList?: InfoList[] | null;
+  totalPriceLabel?: string | JSX.Element | null;
+  totalPrice?: string | JSX.Element | null;
+  footer?: JSX.Element | null;
 }
 
 const OrderInfo: FC<OrderInfoProps> = ({
@@ -26,15 +26,18 @@ const OrderInfo: FC<OrderInfoProps> = ({
       {title ? <div className={styles.order_info__title}>{title}</div> : null}
       {infoList && infoList.length ? (
         <div className={styles.order_info__list}>
-          {infoList.map((i) => (
-            <div className={styles.order_param}>
-              <div className={styles.order_param__label}>{i.text}</div>
-              <div className={styles.order_param__value}>{i.value}</div>
-            </div>
-          ))}
+          {infoList.map(
+            (info, index) =>
+              info.value && (
+                <div className={styles.order_param} key={index}>
+                  <div className={styles.order_param__label}>{info.text}</div>
+                  <div className={styles.order_param__value}>{info.value}</div>
+                </div>
+              )
+          )}
         </div>
       ) : null}
-      {totalPrice || totalPriceLabel ? (
+      {totalPrice && totalPriceLabel ? (
         <div className={styles.order_info__price}>
           <span className={styles.order_price_label}>{totalPriceLabel}</span>{' '}
           <span className={styles.order_price_value}>{totalPrice}</span>
