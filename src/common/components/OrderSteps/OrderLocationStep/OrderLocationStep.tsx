@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { OrderFormData } from '../../../../pages/Order/Order';
 import { useGetCityQuery } from '../../../../services/cityApi';
 import { useGetPointQuery } from '../../../../services/pointApi';
-import Select from '../../../ui/Select/Select';
+import Select, { Option } from '../../../ui/Select/Select';
 import styles from './OrderLocationStep.module.sass';
 import mapImg from '../../../../assets/images/map.jpg';
 
@@ -43,6 +43,11 @@ const OrderLocationStep: FC<OrderLocationStepProps> = ({
       value: city.id,
     }));
 
+  const handleCityChange = (value: Option | null) => {
+    setFieldValue('city', value);
+    setFieldValue('point', null);
+  };
+
   return (
     <div className={styles.order}>
       <div className={styles.order__field_list}>
@@ -53,7 +58,7 @@ const OrderLocationStep: FC<OrderLocationStepProps> = ({
             placeholder='Начните вводить город ...'
             value={values.city}
             isLoading={isCitiesFetching}
-            onChange={(value) => setFieldValue('city', value)}
+            onChange={handleCityChange}
             options={cityOptions}
           />
         </div>
