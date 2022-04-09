@@ -13,11 +13,22 @@ interface OrderLocationStepProps {
   setFieldValue: (field: string, value: any, shouldValidate?: boolean) => void;
 }
 
+interface IPlacemark {
+  coords: number[];
+  pointId: string;
+  cityId: string;
+}
+
 const OrderLocationStep: FC<OrderLocationStepProps> = ({
   values,
   setFieldValue = () => {},
 }) => {
-  const [placemarksCoords, setPlacemarksCoords] = useState<any[]>([]);
+  const [mapPlacemarks, setMapPlacemarks] = useState<IPlacemark[]>([]);
+  const activePlacemark = values.point?.value
+    ? mapPlacemarks.find(
+        (placemark) => placemark.pointId === values.point?.value
+      )
+    : null;
   const { cities = [], isFetching: isCitiesFetching } = useGetCityQuery(null, {
     selectFromResult: ({ data, isFetching }) => ({
       isFetching,
@@ -50,17 +61,28 @@ const OrderLocationStep: FC<OrderLocationStepProps> = ({
     setFieldValue('point', null);
   };
 
+  const handlePlacemarkClick = (placemark: IPlacemark) => {
+    const { pointId, cityId } = placemark;
+    const city = cities.find((city) => city.id === cityId);
+    const point = points.find((point) => point.id === pointId);
+    setFieldValue('city', { label: city?.name, value: city?.id });
+    setFieldValue('point', {
+      label: `${point?.name} (${point?.address})`,
+      value: point?.id,
+    });
+  };
+
   const handleMapLoad = async (ymaps: YMapsApi) => {
-    const pointsCoords = await Promise.all(
-      filteredPoints.map(async (point) => {
+    const placemarks = await Promise.all(
+      points.map(async (point) => {
         const res = await ymaps.geocode(
           `${point.cityId.name} ${point.address}`
         );
         const coords = res.geoObjects.get(0).geometry.getCoordinates();
-        return coords;
+        return { coords, pointId: point.id, cityId: point.cityId.id };
       })
     );
-    setPlacemarksCoords(pointsCoords);
+    setMapPlacemarks(placemarks);
   };
 
   return (
@@ -97,12 +119,18 @@ const OrderLocationStep: FC<OrderLocationStepProps> = ({
         <Map
           onLoad={handleMapLoad}
           className={styles.order_map__map}
-          state={{ center: placemarksCoords[0] || [55.75, 37.57], zoom: 11 }}
+          state={{
+            center: activePlacemark?.coords ||
+              mapPlacemarks[0]?.coords || [0, 0],
+            zoom: 14,
+            controls: ['zoomControl'],
+          }}
         >
-          {placemarksCoords.map((coords) => (
+          {mapPlacemarks.map((placemark) => (
             <Placemark
-              key={coords}
-              geometry={coords}
+              key={placemark.pointId}
+              onClick={() => handlePlacemarkClick(placemark)}
+              geometry={placemark.coords}
               options={{
                 iconLayout: 'default#image',
                 iconImageHref: mapMarker,

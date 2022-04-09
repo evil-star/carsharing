@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { FC } from 'react';
 import styles from './Stepper.module.sass';
 import StepperItem from './StepperItem/StepperItem';
@@ -10,7 +11,7 @@ export interface Step {
   isAvailable: boolean;
 }
 
-interface StepperProps {
+interface StepperProps extends React.ComponentPropsWithoutRef<'div'> {
   steps: Step[];
   activeStep: Step;
   onStepChange?: (step: StepId) => void;
@@ -20,6 +21,7 @@ const Stepper: FC<StepperProps> = ({
   steps,
   onStepChange = () => {},
   activeStep,
+  className,
 }) => {
   const isStepCompleted = (step: Step) => {
     return (
@@ -29,7 +31,7 @@ const Stepper: FC<StepperProps> = ({
   };
 
   return (
-    <div className={styles.stepper}>
+    <div className={classNames(styles.stepper, className)}>
       <div className='container'>
         <div className={styles.stepper__list}>
           {steps.map((step, index) => (

@@ -103,6 +103,18 @@ const Order: FC = () => {
     isAvailable,
   }));
 
+  const orderInfoList = [
+    {
+      text: 'Пункт выдачи',
+      value: values.point && values.city && (
+        <>
+          {values.city.label} <br />
+          {points.find((point) => point.id === values.point?.value)?.address}
+        </>
+      ),
+    },
+  ];
+
   return (
     <div className={styles.order}>
       <div className='container'>
@@ -110,6 +122,7 @@ const Order: FC = () => {
       </div>
 
       <Stepper
+        className={styles.order__stepper}
         steps={stepperSteps}
         activeStep={activeStepData || orderSteps[0]}
         onStepChange={setActiveStep}
@@ -132,20 +145,7 @@ const Order: FC = () => {
           <div className={styles.order__sidebar}>
             <OrderInfo
               title='Ваш заказ:'
-              infoList={[
-                {
-                  text: 'Пункт выдачи',
-                  value: values.point && values.city && (
-                    <>
-                      {values.city.label} <br />
-                      {
-                        points.find((point) => point.id === values.point?.value)
-                          ?.address
-                      }
-                    </>
-                  ),
-                },
-              ]}
+              infoList={orderInfoList}
               footer={
                 <Button
                   className={styles.order__info_button}

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { Step, StepId } from '../Stepper';
 import styles from './StepperItem.module.sass';
 
-interface StepperItem {
+interface StepperItemProps {
   step: Step;
   activeStep: Step;
   isLast?: boolean;
@@ -12,7 +12,7 @@ interface StepperItem {
   onStepChange?: (step: StepId) => void;
 }
 
-const StepperItem: FC<StepperItem> = ({
+const StepperItem: FC<StepperItemProps> = ({
   step,
   activeStep,
   isLast = false,
