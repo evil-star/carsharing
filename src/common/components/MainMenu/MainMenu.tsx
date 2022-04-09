@@ -24,17 +24,16 @@ const MainMenu: FC<MainMenuProps> = ({
   socialMedia,
   handleClose = () => {},
 }) => {
+  const menuClassNames = classNames(styles.menu, {
+    [styles['menu--active']]: isActive,
+  });
+
   useEffect(() => {
     document.body.style.overflow = isActive ? 'hidden' : '';
   }, [isActive]);
 
   return (
-    <div
-      className={classNames(styles.menu, {
-        [styles['menu--active']]: isActive,
-      })}
-      onClick={handleClose}
-    >
+    <div className={menuClassNames} onClick={handleClose}>
       <div className={styles.menu__main} onClick={(e) => e.stopPropagation()}>
         <div className={styles.menu__content}>
           <div className={styles.menu__cross} onClick={handleClose}>

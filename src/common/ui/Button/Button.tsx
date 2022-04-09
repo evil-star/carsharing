@@ -19,15 +19,14 @@ const Button: FC<ButtonProps> = ({
   className,
   ...rest
 }) => {
+  const buttonClassNames = classNames(styles.button, className, {
+    [styles[`button--${variant}`]]: variant,
+    [styles[`button--${color}`]]: color,
+    [styles[`button--disabled`]]: disabled,
+  });
+
   return (
-    <button
-      {...rest}
-      className={classNames(styles.button, className, {
-        [styles[`button--${variant}`]]: variant,
-        [styles[`button--${color}`]]: color,
-        [styles[`button--disabled`]]: disabled,
-      })}
-    >
+    <button {...rest} className={buttonClassNames}>
       {children}
     </button>
   );

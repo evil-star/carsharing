@@ -16,13 +16,12 @@ const Hamburger: FC<HamburgerProps> = ({
   variant,
   ...rest
 }) => {
+  const burgerClassNames = classNames(styles.burger, className, {
+    [styles['burger--cross']]: variant === 'cross',
+  });
+
   return (
-    <div
-      {...rest}
-      className={classNames(styles.burger, className, {
-        [styles['burger--cross']]: variant === 'cross',
-      })}
-    >
+    <div {...rest} className={burgerClassNames}>
       <span
         className={styles.burger__line}
         style={{ backgroundColor: linesColor }}

@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import styles from './Stepper.module.sass';
-import { ReactComponent as Arrow2RightIcon } from '../../../assets/images/icons/arrow2-right.svg';
-import classNames from 'classnames';
+import StepperItem from './StepperItem/StepperItem';
 
 export type StepId = string | number | undefined | null;
 
@@ -34,27 +33,19 @@ const Stepper: FC<StepperProps> = ({
       <div className='container'>
         <div className={styles.stepper__list}>
           {steps.map((step, index) => (
-            <div className={styles.stepper__item} key={step.id}>
-              <div
-                className={classNames(styles.stepper__link, {
-                  [styles['stepper__link--active']]: activeStep.id === step.id,
-                  [styles['stepper__link--completed']]: isStepCompleted(step),
-                  [styles['stepper__link--available']]: step.isAvailable,
-                })}
-                onClick={() =>
-                  step.isAvailable ? onStepChange(step.id) : null
-                }
-              >
-                {step.text}
-              </div>
-              {steps.length - 1 === index ? null : (
-                <Arrow2RightIcon className={styles.stepper__item_icon} />
-              )}
-            </div>
+            <StepperItem
+              key={index}
+              step={step}
+              activeStep={activeStep}
+              isLast={steps.length - 1 === index ? true : false}
+              isStepCompleted={isStepCompleted(step)}
+              onStepChange={onStepChange}
+            />
           ))}
         </div>
       </div>
     </div>
   );
 };
+
 export default Stepper;
