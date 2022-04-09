@@ -97,6 +97,11 @@ const Order: FC = () => {
     },
   ];
   const activeStepData = orderSteps.find((step) => step.id === activeStep);
+  const stepperSteps = orderSteps.map(({ text, id, isAvailable }) => ({
+    text,
+    id,
+    isAvailable,
+  }));
 
   return (
     <div className={styles.order}>
@@ -105,11 +110,7 @@ const Order: FC = () => {
       </div>
 
       <Stepper
-        steps={orderSteps.map(({ text, id, isAvailable }) => ({
-          text,
-          id,
-          isAvailable,
-        }))}
+        steps={stepperSteps}
         activeStep={activeStepData || orderSteps[0]}
         onStepChange={setActiveStep}
       />

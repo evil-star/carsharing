@@ -1,10 +1,12 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { OrderFormData } from '../../../../pages/Order/Order';
 import { useGetCityQuery } from '../../../../services/cityApi';
 import { useGetPointQuery } from '../../../../services/pointApi';
 import Select, { Option } from '../../../ui/Select/Select';
 import styles from './OrderLocationStep.module.sass';
-import mapImg from '../../../../assets/images/map.jpg';
+import Map from '../../Map/Map';
+import { Placemark, YMapsApi } from 'react-yandex-maps';
+import mapMarker from '../../../../assets/images/icons/map-marker.svg';
 
 interface OrderLocationStepProps {
   values: OrderFormData;
@@ -15,6 +17,7 @@ const OrderLocationStep: FC<OrderLocationStepProps> = ({
   values,
   setFieldValue = () => {},
 }) => {
+  const [placemarksCoords, setPlacemarksCoords] = useState<any[]>([]);
   const { cities = [], isFetching: isCitiesFetching } = useGetCityQuery(null, {
     selectFromResult: ({ data, isFetching }) => ({
       isFetching,
@@ -27,15 +30,14 @@ const OrderLocationStep: FC<OrderLocationStepProps> = ({
       points: data?.data?.filter((point) => point.cityId),
     }),
   });
+  const filteredPoints = points.filter((point) =>
+    values.city ? point.cityId.id === values.city.value : true
+  );
 
-  const pointOptions = points
-    .filter((point) =>
-      values.city ? point.cityId.id === values.city.value : true
-    )
-    .map((point) => ({
-      label: `${point.name} (${point.address})`,
-      value: point.id,
-    }));
+  const pointOptions = filteredPoints.map((point) => ({
+    label: `${point.name} (${point.address})`,
+    value: point.id,
+  }));
   const cityOptions = cities
     .filter((city) => points.some((point) => point.cityId?.id === city.id))
     .map((city) => ({
@@ -46,6 +48,19 @@ const OrderLocationStep: FC<OrderLocationStepProps> = ({
   const handleCityChange = (value: Option | null) => {
     setFieldValue('city', value);
     setFieldValue('point', null);
+  };
+
+  const handleMapLoad = async (ymaps: YMapsApi) => {
+    const pointsCoords = await Promise.all(
+      filteredPoints.map(async (point) => {
+        const res = await ymaps.geocode(
+          `${point.cityId.name} ${point.address}`
+        );
+        const coords = res.geoObjects.get(0).geometry.getCoordinates();
+        return coords;
+      })
+    );
+    setPlacemarksCoords(pointsCoords);
   };
 
   return (
@@ -79,9 +94,24 @@ const OrderLocationStep: FC<OrderLocationStepProps> = ({
 
       <div className={styles.order_map}>
         <div className={styles.order_map__label}>Выбрать на карте:</div>
-        <div className={styles.order_map__map}>
-          <img src={mapImg} alt='Карта' />
-        </div>
+        <Map
+          onLoad={handleMapLoad}
+          className={styles.order_map__map}
+          state={{ center: placemarksCoords[0] || [55.75, 37.57], zoom: 11 }}
+        >
+          {placemarksCoords.map((coords) => (
+            <Placemark
+              key={coords}
+              geometry={coords}
+              options={{
+                iconLayout: 'default#image',
+                iconImageHref: mapMarker,
+                iconImageSize: [18, 18],
+                iconImageOffset: [-8, -8],
+              }}
+            />
+          ))}
+        </Map>
       </div>
     </div>
   );
