@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/carsharing/static/css/main.aed8b1d9.css",
-    "main.js": "/carsharing/static/js/main.b8a9ea51.js",
+    "main.css": "/carsharing/static/css/main.4af8ae9b.css",
+    "main.js": "/carsharing/static/js/main.09ffb751.js",
     "static/media/map.jpg": "/carsharing/static/media/map.35d6adebd8a5e4b8cf19.jpg",
     "static/media/Robotolight.ttf": "/carsharing/static/media/Robotolight.25d47456caffa85babba.ttf",
     "static/media/Robotobold.ttf": "/carsharing/static/media/Robotobold.1ac02c026895c20df570.ttf",
@@ -15,20 +15,19 @@
     "static/media/Robotomedium.woff2": "/carsharing/static/media/Robotomedium.76cb645b72a0083e239f.woff2",
     "static/media/Robotolight.woff2": "/carsharing/static/media/Robotolight.95ff440a51f48ad36a98.woff2",
     "static/media/Roboto.woff2": "/carsharing/static/media/Roboto.806e04d8241d87f99a68.woff2",
-    "static/media/instagram-circle.svg": "/carsharing/static/media/instagram-circle.5e14e95a222191ed7fb3890c7e06ce56.svg",
     "static/media/telegram-circle.svg": "/carsharing/static/media/telegram-circle.09f73cfe1b599430658800e3f4daa961.svg",
     "static/media/location.svg": "/carsharing/static/media/location.480be180d9ca371c17b43a1a70c32ce9.svg",
     "index.html": "/carsharing/index.html",
-    "static/media/facebook-circle.svg": "/carsharing/static/media/facebook-circle.01c0ca6ad0dd74a76e52b61aad44deac.svg",
     "static/media/cross.svg": "/carsharing/static/media/cross.13854ee106ed73c47a96abbcbadc98e0.svg",
     "static/media/arrow-left.svg": "/carsharing/static/media/arrow-left.1752ae9160db5265a941d6120fcaeadb.svg",
     "static/media/arrow-right.svg": "/carsharing/static/media/arrow-right.7591c327fb5160f95b31d713c84e5cc5.svg",
+    "static/media/map-marker.svg": "/carsharing/static/media/map-marker.c961018a89ef1f0da3c21f3cc6bb3785.svg",
     "static/media/arrow2-right.svg": "/carsharing/static/media/arrow2-right.3f54b55d7d55c4a8870ecaeb995be364.svg",
-    "main.aed8b1d9.css.map": "/carsharing/static/css/main.aed8b1d9.css.map",
-    "main.b8a9ea51.js.map": "/carsharing/static/js/main.b8a9ea51.js.map"
+    "main.4af8ae9b.css.map": "/carsharing/static/css/main.4af8ae9b.css.map",
+    "main.09ffb751.js.map": "/carsharing/static/js/main.09ffb751.js.map"
   },
   "entrypoints": [
-    "static/css/main.aed8b1d9.css",
-    "static/js/main.b8a9ea51.js"
+    "static/css/main.4af8ae9b.css",
+    "static/js/main.09ffb751.js"
   ]
 }
