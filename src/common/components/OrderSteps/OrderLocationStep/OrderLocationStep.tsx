@@ -1,5 +1,4 @@
 import React, { FC, useState } from 'react';
-import { OrderFormData } from '../../../../pages/Order/Order';
 import { useGetCityQuery } from '../../../../services/cityApi';
 import { useGetPointQuery } from '../../../../services/pointApi';
 import Select, { Option } from '../../../ui/Select/Select';
@@ -7,11 +6,7 @@ import styles from './OrderLocationStep.module.sass';
 import Map from '../../Map/Map';
 import { Placemark, YMapsApi } from 'react-yandex-maps';
 import mapMarker from '../../../../assets/images/icons/map-marker.svg';
-
-interface OrderLocationStepProps {
-  values: OrderFormData;
-  setFieldValue: (field: string, value: any, shouldValidate?: boolean) => void;
-}
+import { OrderLocationStepProps } from '../../../../interfaces/OrderStep.interface';
 
 interface IPlacemark {
   coords: number[];

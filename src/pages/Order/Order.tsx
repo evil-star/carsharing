@@ -9,11 +9,16 @@ import Button from '../../common/ui/Button/Button';
 import { Option } from '../../common/ui/Select/Select';
 import { useGetPointQuery } from '../../services/pointApi';
 import { FormikProps, useFormik } from 'formik';
+import OrderModelStep from '../../common/components/OrderSteps/OrderModelStep/OrderModelStep';
 
 export interface OrderFormData {
   city: Option | null;
   point: Option | null;
-  modelName: string | null;
+  car: {
+    name: string | null;
+    id: string | null;
+    colors: string[] | null;
+  };
   color: string | null;
   rentDateFrom: string | null;
   rentDateTo: string | null;
@@ -44,7 +49,11 @@ const Order: FC = () => {
       initialValues: {
         city: null,
         point: null,
-        modelName: null,
+        car: {
+          id: null,
+          name: null,
+          colors: null,
+        },
         color: null,
         rentDateFrom: null,
         rentDateTo: null,
@@ -75,12 +84,12 @@ const Order: FC = () => {
       isAvailable: !!values.city && !!values.point,
       buttonText: 'Дополнительно',
       nextStep: 'extra',
-      required: ['modelName'],
+      required: ['car'],
     },
     {
       text: 'Дополнительно',
       id: 'extra',
-      isAvailable: !!values.modelName,
+      isAvailable: !!values.car.id,
       buttonText: 'Итого',
       nextStep: 'total',
       required: ['color', 'rentDateFrom', 'rentDateTo'],
@@ -140,11 +149,15 @@ const Order: FC = () => {
                   setFieldValue={setFieldValue}
                 />
               )}
+              {activeStep === 'model' && (
+                <OrderModelStep values={values} setFieldValue={setFieldValue} />
+              )}
             </div>
           </div>
           <div className={styles.order__sidebar}>
             <OrderInfo
-              title='Ваш заказ:'
+              className={styles.order__info}
+              infoTitle='Ваш заказ:'
               infoList={orderInfoList}
               footer={
                 <Button
