@@ -8,23 +8,25 @@ export type ButtonColors = 'blue' | 'red' | 'purple' | undefined;
 interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   variant?: ButtonVariants | undefined;
   color?: ButtonColors;
+  disabled?: boolean;
 }
 
 const Button: FC<ButtonProps> = ({
   children,
   variant = '',
   color = '',
+  disabled,
   className,
   ...rest
 }) => {
+  const buttonClassNames = classNames(styles.button, className, {
+    [styles[`button--${variant}`]]: variant,
+    [styles[`button--${color}`]]: color,
+    [styles[`button--disabled`]]: disabled,
+  });
+
   return (
-    <button
-      {...rest}
-      className={classNames(styles.button, className, {
-        [styles[`button--${variant}`]]: variant,
-        [styles[`button--${color}`]]: color,
-      })}
-    >
+    <button {...rest} className={buttonClassNames}>
       {children}
     </button>
   );

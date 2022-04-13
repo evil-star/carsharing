@@ -4,8 +4,11 @@ import Button from '../../common/ui/Button/Button';
 import HeroSlider from '../../common/components/HeroSlider/HeroSlider';
 import { homePageSlides } from '../../consts';
 import PageHeader from '../../common/components/PageHeader/PageHeader';
+import { useNavigate } from 'react-router';
 
 const Home: FC = () => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.home}>
       <div className={styles.home__main_col}>
@@ -22,7 +25,12 @@ const Home: FC = () => {
               Поминутная аренда авто твоего города
             </div>
           </div>
-          <Button className={styles.home__button}>Забронировать</Button>
+          <Button
+            className={styles.home__button}
+            onClick={() => navigate('/order')}
+          >
+            Забронировать
+          </Button>
         </div>
 
         <div className={styles.home__extra}>

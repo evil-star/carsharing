@@ -1,0 +1,83 @@
+@import "../../../assets/styles/mixins/media-queries"
+@import "../../../assets/styles/variables"
+    
+.select_wrapper
+    display: flex
+    align-items: center
+.select__side_label
+    font-weight: 300
+    font-size: 14px
+    line-height: 16px
+    color: $black
+    margin-right: 8px
+
+.select
+    flex-grow: 1
+    [class$='-control']
+        border: 0
+        border-bottom: 1px solid $grey
+        border-radius: 0
+        background-color: transparent
+        min-height: auto
+        box-shadow: none
+        &:hover
+            border-color: $grey
+    [class*='__value-container']
+        padding: 0
+        padding-left: 8px
+    [class$='-singleValue']
+        margin: 0
+        font-size: 14px
+        line-height: 16px
+    [class$='-placeholder']
+        margin: 0
+        color: $grey
+        font-size: 14px
+        line-height: 16px
+        font-weight: 300
+    [class*='__input-container']
+        margin: 0
+        padding: 0
+        color: $black
+        font-size: 14px
+        line-height: 16px
+    [class$='-menu']
+        margin: 0
+        border-radius: 0
+        box-shadow: none
+    [class*='__menu-list']
+        padding: 4px 0
+        max-height: 106px
+        border: 1px solid $greyLight
+        border-top: 0
+        &::-webkit-scrollbar
+            width: 6px
+            border-left: 1px solid $greyLight
+            border-right: 1px solid $greyLight
+            margin-left: -1px
+        &::-webkit-scrollbar-thumb
+            background-clip: padding-box
+            border: 2px solid rgba(0, 0, 0, 0)
+            border-radius: 9999px
+            background-color: #AAAAAA
+    [class$='-option']
+        padding: 4px 8px
+        background-color: transparent
+        color: $grey
+        cursor: pointer
+        font-size: 14px
+        line-height: 16px
+        &:hover, &:active
+            color: $primary
+            background-color: transparent
+    [class$='-loadingIndicator']
+        padding: 0
+        padding-left: 8px
+        margin: 0
+.select__clear
+    cursor: pointer
+    padding: 5px
+    margin: -5px
+    margin-left: 0
+    svg
+        display: block
