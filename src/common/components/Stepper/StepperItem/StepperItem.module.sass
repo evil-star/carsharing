@@ -2,16 +2,19 @@
 @import "../../../../assets/styles/mixins/media-queries"
     
 .stepper__item
-    display: flex
+    display: inline-block
     align-items: center
+    white-space: nowrap
 .stepper__item_icon
     margin: 0 16px
+    display: inline-block
 .stepper__link
     color: $grey
     font-weight: 700
     font-size: 14px
     line-height: 16px
     transition: color .2s
+    display: inline-block
 
 .stepper__link--active
     color: $primary

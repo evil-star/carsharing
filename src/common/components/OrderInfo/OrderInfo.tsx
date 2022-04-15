@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { FC } from 'react';
 import styles from './OrderInfo.module.sass';
 
@@ -6,8 +7,8 @@ interface InfoList {
   value: string | JSX.Element | null;
 }
 
-interface OrderInfoProps {
-  title?: string | JSX.Element | null;
+interface OrderInfoProps extends React.ComponentPropsWithoutRef<'div'> {
+  infoTitle?: string | JSX.Element | null;
   infoList?: InfoList[] | null;
   totalPriceLabel?: string | JSX.Element | null;
   totalPrice?: string | JSX.Element | null;
@@ -15,15 +16,18 @@ interface OrderInfoProps {
 }
 
 const OrderInfo: FC<OrderInfoProps> = ({
-  title,
+  infoTitle,
   infoList,
   totalPrice,
   totalPriceLabel = 'Цена:',
   footer,
+  className,
 }) => {
   return (
-    <div className={styles.order_info}>
-      {title ? <div className={styles.order_info__title}>{title}</div> : null}
+    <div className={classNames(styles.order_info, className)}>
+      {infoTitle ? (
+        <div className={styles.order_info__title}>{infoTitle}</div>
+      ) : null}
       {infoList && infoList.length ? (
         <div className={styles.order_info__list}>
           {infoList.map(

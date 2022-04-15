@@ -1,0 +1,44 @@
+@import "../../../assets/styles/mixins/media-queries"
+@import "../../../assets/styles/variables"
+
+.radio
+    display: inline-flex
+    position: relative
+    font-weight: 300
+    font-size: 14px
+    line-height: 16px
+    cursor: pointer
+.radio__input
+    position: absolute
+    top: 0
+    left: 0
+    width: 0
+    height: 0
+    opacity: 0
+    visibility: hidden
+.radio__input:checked ~ .radio__dot
+    border-color: $primary
+    background-color: $primary
+    &:after
+        content: ''
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        width: 6px
+        height: 6px
+        border-radius: 50%
+        background-color: #fff
+.radio__input:checked ~ .radio__text
+    color: $black
+.radio__dot
+    position: relative
+    width: 12px
+    height: 12px
+    border: 1px solid #999999
+    border-radius: 50%
+    margin-right: 8px
+    margin-top: .1em
+    flex-shrink: 0
+.radio__text
+    color: $grey
